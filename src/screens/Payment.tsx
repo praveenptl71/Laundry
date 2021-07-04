@@ -2,13 +2,23 @@ import { StackNavigationHelpers } from "@react-navigation/stack/lib/typescript/s
 import React, { Component } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { ScrollView, View, TouchableOpacity, Text } from "react-native";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { OrderPlaced } from "../components/OrderPlaced";
 import RadioButton from "../components/RadioButton";
 
 
 export class PaymentScreen extends Component<{
     navigation: StackNavigationHelpers
 }>{
+    state= {
+        presentActionSheet:false,
+        placedOrder:false,
+        failedOrder:false
+    }
+
+    openOrderPlaced = (state:boolean) => {
+        this.setState({placedOrder:state})
+    }
 
     render() {
         let paymentMethods = [
@@ -43,7 +53,7 @@ export class PaymentScreen extends Component<{
                 </View>
                 <ScrollView style={{ flex: 1, padding: 20, marginBottom: 5 }}>
                     <View style={{ flex: 1, flexDirection: 'row', paddingHorizontal: 20 }}>
-                        <Text style={{ flex: 1, flexDirection: 'column', fontSize: 17, fontWeight: 'bold' }}>Pickup Method</Text>
+                        <Text style={{ flex: 1, flexDirection: 'column', fontSize: 17, fontWeight: 'bold' }}>Payment Method</Text>
                     </View>
 
                     <View style={{ margin: 20, padding: 20, backgroundColor: '#FFFFFF', borderRadius: 30 }}>
@@ -52,10 +62,11 @@ export class PaymentScreen extends Component<{
                 </ScrollView>
                 <TouchableOpacity
                     activeOpacity={0.6} style={{ backgroundColor: '#0083FF', marginHorizontal: 30, marginBottom: 20, borderRadius: 30, paddingVertical: 16 }}
-                    onPress={() => null}
+                    onPress={() => this.openOrderPlaced(true)}
                 >
                     <Text style={{ color: '#FFFFFF', textAlign: 'center', fontWeight: 'bold', fontSize: 18 }}>Complete order</Text>
                 </TouchableOpacity>
+                <OrderPlaced modalVisible={this.state.placedOrder} onRequestClose={()=> this.openOrderPlaced(false)} />
             </SafeAreaView>
         )
     }

@@ -55,7 +55,7 @@ export class DrawerContent extends React.Component<{
                     }
                 </ScrollView>
                 <View style={{padding:40}}>
-                    <TouchableOpacity style={{flexDirection:'row', marginBottom:30}}>
+                    <TouchableOpacity style={{flexDirection:'row', marginBottom:30}} onPress={()=> this.props.navigation.popToTop()}>
                         <Text style={{fontSize:20, marginEnd:20, fontWeight:'bold', color:'#FFFFFF'}}>Logout</Text>
                         <Icon name="arrow-right" size={28} color="#FFFFFF" />
                     </TouchableOpacity>

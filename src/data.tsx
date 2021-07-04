@@ -11,9 +11,9 @@ export const MenuItem: IDrawerMenu[] = [
     { id: 2, title: 'Profile', icon: 'account-outline', route: 'Profile' },
     { id: 3, title: 'Laundries', icon: 'cart-outline', route: 'Laundries' },
     { id: 4, title: 'offer and promo', icon: 'tag-outline', route: 'Offers' },
-    { id: 5, title: 'Privacy policy', icon: 'account-key-outline', route: 'Package' },
+    { id: 5, title: 'Package', icon: 'package-variant', route: 'Package' },
     { id: 6, title: 'Settings', icon: 'cog-outline', route: 'Setting' },
-    { id: 7, title: 'About', icon: 'information-outline', route: 'Package' }
+    { id: 7, title: 'About', icon: 'information-outline', route: 'Home' }
 ]
 
 export const ProductItems: IProduct[] = [
